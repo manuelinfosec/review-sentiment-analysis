@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sentiment Analysis</title>
+	<style>
+		p {
+			margin-left: 20px;
+			margin-top: -20px
+		}
+	</style>
+</head>
+<body>
+
+	<h1>Sentiment Analysis</h1>
+
+	{% if sentiment %}
+		<h3>{{sentiment}}</h3>
+		{% if sentiment==1 %}
+			<h3 style="color:green">Positve</h3>
+			<p>This review is considered a good reflection of the product or service offered.</p>
+		{% endif %}
+		{% if sentiment==-1 %}
+			<h3 style="color: red">Negative</h3>
+			<p>This review is considered a poor reflection of the product or service offered.</p>
+		{% endif %}
+	{% endif %}
+
+	<form action="/predict" method="POST">
+		<fieldset>
+			<legend>Product/Movie Review</legend>
+			<label>Enter the review: </label><br>
+			<textarea name="review" cols="40" rows="4"></textarea><br><br>
+			<input type="submit" name="" value="Predict Sentiment">
+		</fieldset>
+	</form>
+
+</body>
+</html>
